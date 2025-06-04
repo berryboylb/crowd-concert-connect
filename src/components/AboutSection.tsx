@@ -37,8 +37,8 @@ const AboutSection = () => {
               <h3 className="text-white font-semibold text-lg">Date & Time</h3>
             </div>
             <div className="text-white/80 space-y-2">
-              <p><strong>Date:</strong> Saturday, June 21, 2025</p>
-              <p><strong>Time:</strong> 4:00 PM - 11:00 PM</p>
+              <p><strong>Date:</strong> Friday, June 6, 2025 </p>
+              <p><strong>Time:</strong> 8 PM</p>
               <p><strong>Duration:</strong> Till Dawn</p>
             </div>
           </div>
@@ -50,9 +50,9 @@ const AboutSection = () => {
               <h3 className="text-white font-semibold text-lg">Venue</h3>
             </div>
             <div className="text-white/80 space-y-2">
-              <p><strong>Location:</strong> Lagos Open Air Arena</p>
-              <p><strong>Address:</strong> 123 Festival Road, Lagos, Nigeria</p>
-              <p><strong>Capacity:</strong> 10,000+ Festival-goers</p>
+              <p><strong>Location:</strong> To be communicated</p>
+              <p><strong>Address:</strong> To be communicated</p>
+              <p><strong>Capacity:</strong> 500+ Concert-goers</p>
             </div>
           </div>
 
@@ -78,7 +78,7 @@ const AboutSection = () => {
             <div className="text-white/80 space-y-2">
               <p><strong>Audience:</strong> Youth & Young Adults</p>
               <p><strong>Age Group:</strong> 16-35 Years</p>
-              <p><strong>Expected:</strong> 10,000+ Attendees</p>
+              <p><strong>Expected:</strong> 500+ Attendees</p>
             </div>
           </div>
 

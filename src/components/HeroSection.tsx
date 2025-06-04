@@ -125,8 +125,8 @@ const HeroSection = () => {
           </button>
           
           <div className="text-white/80 text-sm">
-            <p>Saturday, June 21, 2025 • 4:00 PM - 11:00 PM</p>
-            <p>Lagos Open Air Arena</p>
+            <p>Friday, June 6, 2025 • 8PM - Till Dawn</p>
+            <p>Venue: To be communicated</p>
           </div>
         </div>
       </div>

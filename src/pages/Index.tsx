@@ -1,11 +1,11 @@
-
-import React from 'react';
-import Navigation from '../components/Navigation';
-import HeroSection from '../components/HeroSection';
-import AboutSection from '../components/AboutSection';
-import MapSection from '../components/MapSection';
-import TicketSection from '../components/TicketSection';
-import Footer from '../components/Footer';
+import React from "react";
+import Navigation from "../components/Navigation";
+import HeroSection from "../components/HeroSection";
+import AboutSection from "../components/AboutSection";
+import MapSection from "../components/MapSection";
+import TicketSection from "../components/TicketSection";
+import Footer from "../components/Footer";
+import { PoweredBy } from "@/components/PoweeredBy";
 
 const Index = () => {
   return (
@@ -16,6 +16,7 @@ const Index = () => {
       <MapSection />
       <TicketSection />
       <Footer />
+      <PoweredBy />
     </div>
   );
 };
