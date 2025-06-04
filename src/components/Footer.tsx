@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
 
           {/* Stay Connected */}
-          {/* <div>
+          <div>
             <h3 className="text-xl font-bold text-neon-yellow mb-4">Stay Connected</h3>
             <div className="flex space-x-4 mb-4">
               <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-neon-yellow hover:text-deep-purple transition-all">
@@ -79,11 +79,11 @@ const Footer = () => {
               </a>
             </div>
             <div className="text-white/80">
-              <p className="mb-2">📧 info@crowdconcert.com</p>
-              <p className="mb-2">📞 +234 801 844 6363</p>
-              <p>📞 +234 813 486 3909</p>
+              <p className="mb-2">📧 giftobafaiye@gmail.com</p>
+              {/* <p className="mb-2">📞 +234 801 844 6363</p> */}
+              <p>📞 +234 701 372 2966</p>
             </div>
-          </div> */}
+          </div>
         </div>
 
         {/* Bottom Bar */}
