@@ -39,7 +39,7 @@ const AboutSection = () => {
             <div className="text-white/80 space-y-2">
               <p><strong>Date:</strong> Saturday, June 21, 2025</p>
               <p><strong>Time:</strong> 4:00 PM - 11:00 PM</p>
-              <p><strong>Duration:</strong> 7 Hours of Non-stop Fun</p>
+              <p><strong>Duration:</strong> Till Dawn</p>
             </div>
           </div>
 

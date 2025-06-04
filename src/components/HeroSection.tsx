@@ -72,9 +72,9 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center px-4 animate-fade-in">
+      <div className="relative z-10 text-center px-4 animate-fade-in lg:mt-32">
         {/* Youth Connect Presents */}
-        <div className="mb-4">
+        <div className="mb-4 ">
           <span className="text-white/90 text-sm md:text-base font-medium tracking-widest uppercase">
             Youth Connect Presents
           </span>
