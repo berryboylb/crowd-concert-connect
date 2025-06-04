@@ -1,9 +1,10 @@
+
 import React from "react";
 import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import MapSection from "../components/MapSection";
-import TicketSection from "../components/TicketSection";
+import BankTransferTicket from "../components/BankTransferTicket";
 import Footer from "../components/Footer";
 import { PoweredBy } from "@/components/PoweeredBy";
 
@@ -14,7 +15,7 @@ const Index = () => {
       <HeroSection />
       <AboutSection />
       <MapSection />
-      <TicketSection />
+      <BankTransferTicket />
       <Footer />
       <PoweredBy />
     </div>
