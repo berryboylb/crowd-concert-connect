@@ -56,8 +56,8 @@ const Footer = () => {
               >
                 Tickets
               </button>
-              <a href="#" className="block hover:text-neon-yellow transition-colors">Terms & Conditions</a>
-              <a href="#" className="block hover:text-neon-yellow transition-colors">Privacy Policy</a>
+              {/* <a href="#" className="block hover:text-neon-yellow transition-colors">Terms & Conditions</a>
+              <a href="#" className="block hover:text-neon-yellow transition-colors">Privacy Policy</a> */}
             </div>
           </div>
 
