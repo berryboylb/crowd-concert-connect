@@ -79,9 +79,9 @@ const Footer = () => {
               </a>
             </div>
             <div className="text-white/80">
-              <p className="mb-2">📧 giftobafaiye@gmail.com</p>
+              <p className="mb-2">📧 hypevibecomanies@gmail.com</p>
               {/* <p className="mb-2">📞 +234 801 844 6363</p> */}
-              <p>📞 +234 701 372 2966</p>
+              <p>📞 +234 901 844 6363</p>
             </div>
           </div>
         </div>

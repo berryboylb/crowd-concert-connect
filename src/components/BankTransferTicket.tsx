@@ -1,7 +1,18 @@
-
 import React, { useState } from "react";
-import { Copy, Mail, Check, User, Building, CreditCard, Zap, Clock, Star } from "lucide-react";
+import {
+  Copy,
+  Mail,
+  Check,
+  User,
+  Building,
+  CreditCard,
+  Zap,
+  Clock,
+  Star,
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const BankTransferTicket = () => {
   const [quantity, setQuantity] = useState(1);
@@ -17,7 +28,7 @@ const BankTransferTicket = () => {
   const bankDetails = {
     accountNumber: "6053667376",
     bankName: "Moniepoint Microfinance Bank",
-    accountName: "Obafaiye Gift"
+    accountName: "Obafaiye Gift",
   };
 
   const copyToClipboard = (text: string, type: string) => {
@@ -52,7 +63,9 @@ const BankTransferTicket = () => {
   };
 
   const handleEmailConfirmation = () => {
-    const subject = encodeURIComponent(`Crowd Concert Early Bird Payment Confirmation - ${referenceCode}`);
+    const subject = encodeURIComponent(
+      `Crowd Concert Early Bird Payment Confirmation - ${referenceCode}`
+    );
     const body = encodeURIComponent(`Hello,
 
 I have made a payment for The Crowd Concert Early Bird tickets.
@@ -68,7 +81,9 @@ I have attached the payment receipt as evidence.
 
 Thank you.`);
 
-    window.open(`mailto:giftobafaiye@gmail.com?subject=${subject}&body=${body}`);
+    window.open(
+      `mailto:giftobafaiye@gmail.com?cc=hypevibecompanies@gmail.com?subject=${subject}&body=${body}`
+    );
   };
 
   return (
@@ -77,12 +92,12 @@ Thank you.`);
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-deep-purple via-festival-purple to-deep-purple"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-        
+
         {/* Floating Shapes */}
         <div className="absolute top-20 left-10 w-20 h-20 bg-neon-yellow/20 rounded-full blur-xl animate-pulse"></div>
         <div className="absolute top-40 right-20 w-32 h-32 bg-festival-orange/20 rounded-full blur-xl animate-pulse delay-1000"></div>
         <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-festival-magenta/20 rounded-full blur-xl animate-pulse delay-500"></div>
-        
+
         {/* Angled decorative edges */}
         <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-r from-neon-yellow via-festival-orange to-neon-yellow transform -skew-y-2"></div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-r from-neon-yellow via-festival-orange to-neon-yellow transform skew-y-2"></div>
@@ -93,10 +108,12 @@ Thank you.`);
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-festival-orange to-neon-yellow px-6 py-2 rounded-full mb-6 animate-bounce">
             <Zap className="w-5 h-5 text-deep-purple" />
-            <span className="text-deep-purple font-bold text-sm uppercase tracking-wide">Early Bird Special</span>
+            <span className="text-deep-purple font-bold text-sm uppercase tracking-wide">
+              Early Bird Special
+            </span>
             <Clock className="w-5 h-5 text-deep-purple" />
           </div>
-          
+
           <h2 className="text-5xl md:text-6xl font-festival font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-yellow via-festival-orange to-neon-yellow mb-4 drop-shadow-2xl">
             Grab Your Tickets
           </h2>
@@ -107,7 +124,6 @@ Thank you.`);
 
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
-            
             {/* Left Column - Ticket Design & Selection */}
             <div className="lg:col-span-1">
               <div className="relative">
@@ -117,16 +133,24 @@ Thank you.`);
                   <div className="text-center mb-6">
                     <div className="flex items-center justify-center gap-2 mb-3">
                       <Star className="w-6 h-6 text-festival-orange fill-current" />
-                      <span className="text-festival-orange font-bold text-lg">EARLY BIRD</span>
+                      <span className="text-festival-orange font-bold text-lg">
+                        EARLY BIRD
+                      </span>
                       <Star className="w-6 h-6 text-festival-orange fill-current" />
                     </div>
                     <h3 className="text-3xl font-bold text-deep-purple mb-2">
                       General Admission
                     </h3>
                     <div className="space-y-1">
-                      <p className="text-gray-500 line-through text-lg">₦{regularPrice.toLocaleString()}</p>
-                      <p className="text-4xl font-bold text-festival-orange">₦{earlyBirdPrice.toLocaleString()}</p>
-                      <p className="text-green-600 font-semibold">Save ₦{savings.toLocaleString()}!</p>
+                      <p className="text-gray-500 line-through text-lg">
+                        ₦{regularPrice.toLocaleString()}
+                      </p>
+                      <p className="text-4xl font-bold text-festival-orange">
+                        ₦{earlyBirdPrice.toLocaleString()}
+                      </p>
+                      <p className="text-green-600 font-semibold">
+                        Save ₦{savings.toLocaleString()}!
+                      </p>
                     </div>
                   </div>
 
@@ -175,7 +199,10 @@ Thank you.`);
                   <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2">
                     <div className="flex flex-col space-y-2">
                       {[...Array(8)].map((_, i) => (
-                        <div key={i} className="w-4 h-4 bg-gray-200 rounded-full"></div>
+                        <div
+                          key={i}
+                          className="w-4 h-4 bg-gray-200 rounded-full"
+                        ></div>
                       ))}
                     </div>
                   </div>
@@ -191,7 +218,9 @@ Thank you.`);
                       {referenceCode}
                     </span>
                     <button
-                      onClick={() => copyToClipboard(referenceCode, "Reference code")}
+                      onClick={() =>
+                        copyToClipboard(referenceCode, "Reference code")
+                      }
                       className="text-white hover:text-neon-yellow transition-colors"
                     >
                       {hasCopied === "Reference code" ? (
@@ -227,10 +256,17 @@ Thank you.`);
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center space-x-3">
                           <CreditCard className="w-6 h-6 text-deep-purple" />
-                          <span className="font-bold text-gray-700">Account Number</span>
+                          <span className="font-bold text-gray-700">
+                            Account Number
+                          </span>
                         </div>
                         <button
-                          onClick={() => copyToClipboard(bankDetails.accountNumber, "Account number")}
+                          onClick={() =>
+                            copyToClipboard(
+                              bankDetails.accountNumber,
+                              "Account number"
+                            )
+                          }
                           className="text-deep-purple hover:text-festival-purple transition-colors"
                         >
                           {hasCopied === "Account number" ? (
@@ -248,7 +284,9 @@ Thank you.`);
                     <div className="p-6 bg-gradient-to-br from-gray-50 to-white rounded-2xl border-2 border-gray-100 hover:border-festival-orange transition-colors">
                       <div className="flex items-center space-x-3 mb-3">
                         <User className="w-6 h-6 text-deep-purple" />
-                        <span className="font-bold text-gray-700">Account Name</span>
+                        <span className="font-bold text-gray-700">
+                          Account Name
+                        </span>
                       </div>
                       <p className="text-xl font-bold text-deep-purple">
                         {bankDetails.accountName}
@@ -260,7 +298,9 @@ Thank you.`);
                     <div className="p-6 bg-gradient-to-br from-gray-50 to-white rounded-2xl border-2 border-gray-100 hover:border-festival-orange transition-colors">
                       <div className="flex items-center space-x-3 mb-3">
                         <Building className="w-6 h-6 text-deep-purple" />
-                        <span className="font-bold text-gray-700">Bank Name</span>
+                        <span className="font-bold text-gray-700">
+                          Bank Name
+                        </span>
                       </div>
                       <p className="text-xl font-bold text-deep-purple">
                         {bankDetails.bankName}
@@ -269,7 +309,9 @@ Thank you.`);
 
                     <div className="p-6 bg-gradient-to-r from-neon-yellow/20 to-festival-orange/20 border-3 border-neon-yellow rounded-2xl">
                       <div className="text-center">
-                        <p className="font-bold text-deep-purple text-lg mb-2">Amount to Transfer</p>
+                        <p className="font-bold text-deep-purple text-lg mb-2">
+                          Amount to Transfer
+                        </p>
                         <p className="text-4xl font-bold text-deep-purple">
                           {formatCurrency(total)}
                         </p>
@@ -289,12 +331,21 @@ Thank you.`);
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     <ol className="text-blue-700 space-y-2 list-decimal list-inside">
-                      <li className="font-medium">Transfer exact amount above</li>
-                      <li className="font-medium">Include reference code in description</li>
+                      <li className="font-medium">
+                        Transfer exact amount above
+                      </li>
+                      <li className="font-medium">
+                        Include reference code in description
+                      </li>
                     </ol>
-                    <ol className="text-blue-700 space-y-2 list-decimal list-inside" start="3">
+                    <ol
+                      className="text-blue-700 space-y-2 list-decimal list-inside"
+                      start="3"
+                    >
                       <li className="font-medium">Screenshot your receipt</li>
-                      <li className="font-medium">Send confirmation email below</li>
+                      <li className="font-medium">
+                        Send confirmation email below
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -309,9 +360,23 @@ Thank you.`);
                   <Star className="w-6 h-6 group-hover:animate-spin" />
                 </button>
 
+                {/* <Button
+                  asChild
+                  className="w-full bg-gradient-to-r from-deep-purple via-festival-purple to-festival-magenta text-white py-5 rounded-2xl font-bold text-xl hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center space-x-3 group"
+                >
+                  <Link to="mailto:giftobafaiye@gmail.com">
+                    <Mail className="w-6 h-6 group-hover:animate-bounce" />
+                    <span>Send Payment Confirmation</span>
+                    <Star className="w-6 h-6 group-hover:animate-spin" />
+                  </Link>
+                </Button> */}
+
                 <div className="text-center mt-4 space-y-2">
                   <p className="text-gray-600 font-medium">
-                    📧 Email: <span className="text-deep-purple font-bold">giftobafaiye@gmail.com</span>
+                    📧 Email:{" "}
+                    <span className="text-deep-purple font-bold">
+                      giftobafaiye@gmail.com
+                    </span>
                   </p>
                   <p className="text-sm text-gray-500">
                     ⚡ Early bird tickets are limited - secure yours now!
