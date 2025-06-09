@@ -34,25 +34,25 @@ const CountdownTimer = () => {
 
   const TimeBlock = ({ value, label }: { value: number; label: string }) => (
     <div className="flex flex-col items-center">
-      <div className="bg-gradient-to-b from-festival-purple to-deep-purple rounded-lg p-4 mb-2 border-2 border-neon-yellow/30 shadow-lg">
-        <span className="text-3xl md:text-4xl font-bold text-neon-yellow font-festival animate-countdown-flip">
+      <div className="bg-gradient-to-b from-festival-purple to-deep-purple rounded-lg p-2 sm:p-3 md:p-4 mb-1 sm:mb-2 border-2 border-neon-yellow/30 shadow-lg">
+        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-neon-yellow font-festival animate-countdown-flip">
           {value.toString().padStart(2, '0')}
         </span>
       </div>
-      <span className="text-white/80 text-sm font-medium uppercase tracking-wide">
+      <span className="text-white/80 text-xs sm:text-sm font-medium uppercase tracking-wide">
         {label}
       </span>
     </div>
   );
 
   return (
-    <div className="flex justify-center items-center space-x-6 md:space-x-8">
+    <div className="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8">
       <TimeBlock value={timeLeft.days} label="Days" />
-      <div className="text-neon-yellow text-2xl font-bold">:</div>
+      <div className="text-neon-yellow text-lg sm:text-xl md:text-2xl font-bold">:</div>
       <TimeBlock value={timeLeft.hours} label="Hours" />
-      <div className="text-neon-yellow text-2xl font-bold">:</div>
+      <div className="text-neon-yellow text-lg sm:text-xl md:text-2xl font-bold">:</div>
       <TimeBlock value={timeLeft.minutes} label="Minutes" />
-      <div className="text-neon-yellow text-2xl font-bold">:</div>
+      <div className="text-neon-yellow text-lg sm:text-xl md:text-2xl font-bold">:</div>
       <TimeBlock value={timeLeft.seconds} label="Seconds" />
     </div>
   );
