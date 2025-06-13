@@ -83,7 +83,7 @@ I have attached the payment receipt as evidence.
 Thank you.`);
 
     window.open(
-      `mailto:giftobafaiye@gmail.com?cc=hypevibecompanies@gmail.com?subject=${subject}&body=${body}`
+      `mailto:giftobafaiye@gmail.com?cc=hypevibecompanies@gmail.com&subject=${subject}&body=${body}`
     );
   };
 
