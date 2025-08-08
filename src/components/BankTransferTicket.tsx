@@ -47,7 +47,8 @@ const BankTransferTicket = () => {
       gradient: "from-blue-500 to-blue-600",
       benefits: ["General Admission", "Access to Main Event", "Standing Area"],
       maxQuantity: 10,
-      description: "Perfect for music lovers who want to experience the concert"
+      description:
+        "Perfect for music lovers who want to experience the concert",
     },
     {
       id: "backstage",
@@ -56,9 +57,15 @@ const BankTransferTicket = () => {
       icon: Star,
       color: "text-purple-600",
       gradient: "from-purple-500 to-purple-600",
-      benefits: ["Backstage Access", "Meet & Greet", "Exclusive Photo Ops", "VIP Entry"],
+      benefits: [
+        "Backstage Access",
+        "Meet & Greet",
+        "Exclusive Photo Ops",
+        "VIP Entry",
+      ],
       maxQuantity: 5,
-      description: "Get behind-the-scenes access and meet your favorite artists"
+      description:
+        "Get behind-the-scenes access and meet your favorite artists",
     },
     {
       id: "table",
@@ -67,9 +74,14 @@ const BankTransferTicket = () => {
       icon: Crown,
       color: "text-gold-600",
       gradient: "from-yellow-500 to-orange-500",
-      benefits: ["Reserved Table for 4", "Premium Viewing", "Complimentary Drinks", "Table Service"],
+      benefits: [
+        "Reserved Table for 4",
+        "Premium Viewing",
+        "Complimentary Drinks",
+        "Table Service",
+      ],
       maxQuantity: 2,
-      description: "Enjoy the concert in luxury with your own reserved table"
+      description: "Enjoy the concert in luxury with your own reserved table",
     },
     {
       id: "table2",
@@ -78,9 +90,15 @@ const BankTransferTicket = () => {
       icon: Trophy,
       color: "text-orange-600",
       gradient: "from-orange-500 to-red-500",
-      benefits: ["Premium Table for 6", "Front Row View", "Premium Bar Access", "Dedicated Waiter", "VIP Parking"],
+      benefits: [
+        "Premium Table for 6",
+        "Front Row View",
+        "Premium Bar Access",
+        "Dedicated Waiter",
+        "VIP Parking",
+      ],
       maxQuantity: 2,
-      description: "Ultimate luxury experience with premium amenities"
+      description: "Ultimate luxury experience with premium amenities",
     },
     {
       id: "table3",
@@ -89,21 +107,30 @@ const BankTransferTicket = () => {
       icon: Diamond,
       color: "text-purple-800",
       gradient: "from-purple-600 to-pink-600",
-      benefits: ["Ultra-Premium Table for 8", "Stage-side Position", "Unlimited Premium Bar", "Personal Concierge", "VIP Transport", "Exclusive After-party Access"],
+      benefits: [
+        "Ultra-Premium Table for 8",
+        "Stage-side Position",
+        "Unlimited Premium Bar",
+        "Personal Concierge",
+        "VIP Transport",
+        "Exclusive After-party Access",
+      ],
       maxQuantity: 1,
-      description: "The most exclusive experience with unparalleled luxury"
-    }
+      description: "The most exclusive experience with unparalleled luxury",
+    },
   ];
 
-  const currentTicket = ticketTypes.find(t => t.id === selectedTicket)!;
-  const savings = currentTicket.originalPrice ? currentTicket.originalPrice - currentTicket.price : 0;
+  const currentTicket = ticketTypes.find((t) => t.id === selectedTicket)!;
+  const savings = currentTicket.originalPrice
+    ? currentTicket.originalPrice - currentTicket.price
+    : 0;
   const total = quantity * currentTicket.price;
   const referenceCode = `CC${Date.now().toString().slice(-8)}`;
 
   const bankDetails = {
-    accountNumber: "6053667376",
+    accountNumber: "7072185134",
     bankName: "Moniepoint Microfinance Bank",
-    accountName: "Obafaiye Gift",
+    accountName: "JOHN OLOCHE OCHAYI",
   };
 
   const copyToClipboard = (text: string, type: string) => {
@@ -168,7 +195,10 @@ Thank you.`);
   };
 
   return (
-    <section id="tickets" className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
+    <section
+      id="tickets"
+      className="py-12 sm:py-16 md:py-20 relative overflow-hidden"
+    >
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-deep-purple via-festival-purple to-deep-purple"></div>
@@ -208,7 +238,7 @@ Thank you.`);
           {ticketTypes.map((ticket) => {
             const IconComponent = ticket.icon;
             const isSelected = selectedTicket === ticket.id;
-            
+
             return (
               <div
                 key={ticket.id}
@@ -221,25 +251,39 @@ Thank you.`);
               >
                 <div className="text-center">
                   <div className="flex justify-center mb-3">
-                    <IconComponent className={`w-8 h-8 ${isSelected ? 'text-white' : ticket.color}`} />
+                    <IconComponent
+                      className={`w-8 h-8 ${
+                        isSelected ? "text-white" : ticket.color
+                      }`}
+                    />
                   </div>
                   <h3 className="font-bold text-lg mb-2">{ticket.name}</h3>
                   <div className="space-y-1">
                     {ticket.originalPrice && (
-                      <p className={`text-sm line-through ${isSelected ? 'text-white/70' : 'text-gray-400'}`}>
+                      <p
+                        className={`text-sm line-through ${
+                          isSelected ? "text-white/70" : "text-gray-400"
+                        }`}
+                      >
                         ₦{ticket.originalPrice.toLocaleString()}
                       </p>
                     )}
                     <p className="text-xl font-bold">
                       ₦{ticket.price.toLocaleString()}
                     </p>
-                    {savings > 0 && (
-                      <p className={`text-sm font-semibold ${isSelected ? 'text-yellow-200' : 'text-green-400'}`}>
-                        Save ₦{savings.toLocaleString()}!
-                      </p>
-                    )}
+                    {savings > 0 &&
+                      currentTicket.id ==
+                        ticket.id &&(
+                          <p
+                            className={`text-sm font-semibold ${
+                              isSelected ? "text-yellow-200" : "text-green-400"
+                            }`}
+                          >
+                            Save ₦{savings.toLocaleString()}!
+                          </p>
+                        )}
                   </div>
-                  
+
                   {isSelected && (
                     <div className="absolute -top-2 -right-2">
                       <div className="bg-neon-yellow text-deep-purple rounded-full p-2">
@@ -269,16 +313,20 @@ Thank you.`);
                       </span>
                       <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-festival-orange fill-current" />
                     </div>
-                    
+
                     <div className="flex justify-center mb-3">
-                      <currentTicket.icon className={`w-12 h-12 ${currentTicket.color}`} />
+                      <currentTicket.icon
+                        className={`w-12 h-12 ${currentTicket.color}`}
+                      />
                     </div>
-                    
+
                     <h3 className="text-2xl sm:text-3xl font-bold text-deep-purple mb-2">
                       {currentTicket.name}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4">{currentTicket.description}</p>
-                    
+                    <p className="text-gray-600 text-sm mb-4">
+                      {currentTicket.description}
+                    </p>
+
                     <div className="space-y-1">
                       {currentTicket.originalPrice && (
                         <p className="text-gray-500 line-through text-base sm:text-lg">
@@ -298,10 +346,15 @@ Thank you.`);
 
                   {/* Benefits */}
                   <div className="mb-6 p-4 bg-gray-50 rounded-xl">
-                    <h4 className="font-bold text-deep-purple mb-3 text-center">What's Included:</h4>
+                    <h4 className="font-bold text-deep-purple mb-3 text-center">
+                      What's Included:
+                    </h4>
                     <ul className="space-y-2">
                       {currentTicket.benefits.map((benefit, index) => (
-                        <li key={index} className="flex items-center text-sm text-gray-700">
+                        <li
+                          key={index}
+                          className="flex items-center text-sm text-gray-700"
+                        >
                           <Check className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
                           {benefit}
                         </li>
@@ -402,7 +455,8 @@ Thank you.`);
                     Complete Your Payment
                   </h3>
                   <p className="text-gray-600 text-base sm:text-lg">
-                    Make a bank transfer to secure your {currentTicket.name.toLowerCase()} tickets
+                    Make a bank transfer to secure your{" "}
+                    {currentTicket.name.toLowerCase()} tickets
                   </p>
                 </div>
 
