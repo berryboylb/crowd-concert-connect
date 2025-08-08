@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   Copy,
@@ -10,20 +9,99 @@ import {
   Zap,
   Clock,
   Star,
+  Crown,
+  Sparkles,
+  Trophy,
+  Diamond,
+  Users,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { Button } from "./ui/button";
-import { Link } from "react-router-dom";
+
+interface TicketType {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  icon: React.ComponentType<any>;
+  color: string;
+  gradient: string;
+  benefits: string[];
+  maxQuantity: number;
+  description: string;
+}
 
 const BankTransferTicket = () => {
+  const [selectedTicket, setSelectedTicket] = useState<string>("regular");
   const [quantity, setQuantity] = useState(1);
   const [hasCopied, setHasCopied] = useState<string | null>(null);
   const { toast } = useToast();
 
-  const regularPrice = 2000;
-  const earlyBirdPrice = 1500;
-  const savings = regularPrice - earlyBirdPrice;
-  const total = quantity * earlyBirdPrice;
+  const ticketTypes: TicketType[] = [
+    {
+      id: "regular",
+      name: "Regular",
+      price: 3000,
+      originalPrice: 4000,
+      icon: Users,
+      color: "text-blue-600",
+      gradient: "from-blue-500 to-blue-600",
+      benefits: ["General Admission", "Access to Main Event", "Standing Area"],
+      maxQuantity: 10,
+      description: "Perfect for music lovers who want to experience the concert"
+    },
+    {
+      id: "backstage",
+      name: "Backstage",
+      price: 50000,
+      originalPrice: 60000,
+      icon: Star,
+      color: "text-purple-600",
+      gradient: "from-purple-500 to-purple-600",
+      benefits: ["Backstage Access", "Meet & Greet", "Exclusive Photo Ops", "VIP Entry"],
+      maxQuantity: 5,
+      description: "Get behind-the-scenes access and meet your favorite artists"
+    },
+    {
+      id: "table",
+      name: "Table",
+      price: 200000,
+      originalPrice: 250000,
+      icon: Crown,
+      color: "text-gold-600",
+      gradient: "from-yellow-500 to-orange-500",
+      benefits: ["Reserved Table for 4", "Premium Viewing", "Complimentary Drinks", "Table Service"],
+      maxQuantity: 2,
+      description: "Enjoy the concert in luxury with your own reserved table"
+    },
+    {
+      id: "table2",
+      name: "Table II",
+      price: 500000,
+      originalPrice: 600000,
+      icon: Trophy,
+      color: "text-orange-600",
+      gradient: "from-orange-500 to-red-500",
+      benefits: ["Premium Table for 6", "Front Row View", "Premium Bar Access", "Dedicated Waiter", "VIP Parking"],
+      maxQuantity: 2,
+      description: "Ultimate luxury experience with premium amenities"
+    },
+    {
+      id: "table3",
+      name: "Table III",
+      price: 1000000,
+      originalPrice: 1200000,
+      icon: Diamond,
+      color: "text-purple-800",
+      gradient: "from-purple-600 to-pink-600",
+      benefits: ["Ultra-Premium Table for 8", "Stage-side Position", "Unlimited Premium Bar", "Personal Concierge", "VIP Transport", "Exclusive After-party Access"],
+      maxQuantity: 1,
+      description: "The most exclusive experience with unparalleled luxury"
+    }
+  ];
+
+  const currentTicket = ticketTypes.find(t => t.id === selectedTicket)!;
+  const savings = currentTicket.originalPrice ? currentTicket.originalPrice - currentTicket.price : 0;
+  const total = quantity * currentTicket.price;
   const referenceCode = `CC${Date.now().toString().slice(-8)}`;
 
   const bankDetails = {
@@ -44,7 +122,7 @@ const BankTransferTicket = () => {
   };
 
   const incrementQuantity = () => {
-    if (quantity < 10) {
+    if (quantity < currentTicket.maxQuantity) {
       setQuantity(quantity + 1);
     }
   };
@@ -65,14 +143,15 @@ const BankTransferTicket = () => {
 
   const handleEmailConfirmation = () => {
     const subject = encodeURIComponent(
-      `Crowd Concert Early Bird Payment Confirmation - ${referenceCode}`
+      `Crowd Concert ${currentTicket.name} Payment Confirmation - ${referenceCode}`
     );
     const body = encodeURIComponent(`Hello,
 
-I have made a payment for The Crowd Concert Early Bird tickets.
+I have made a payment for The Crowd Concert ${currentTicket.name} tickets.
 
 Payment Details:
-- Quantity: ${quantity} Early Bird ticket(s)
+- Ticket Type: ${currentTicket.name}
+- Quantity: ${quantity} ticket(s)
 - Amount: ${formatCurrency(total)}
 - Reference Code: ${referenceCode}
 - Bank: ${bankDetails.bankName}
@@ -85,6 +164,11 @@ Thank you.`);
     window.open(
       `mailto:giftobafaiye@gmail.com?cc=hypevibecompanies@gmail.com&subject=${subject}&body=${body}`
     );
+  };
+
+  const handleTicketChange = (ticketId: string) => {
+    setSelectedTicket(ticketId);
+    setQuantity(1); // Reset quantity when changing ticket type
   };
 
   return (
@@ -105,8 +189,8 @@ Thank you.`);
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header with Early Bird Badge */}
-        <div className="text-center mb-12 sm:mb-16">
+        {/* Section Header */}
+        <div className="text-center mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-festival-orange to-neon-yellow px-4 sm:px-6 py-2 rounded-full mb-4 sm:mb-6 animate-bounce">
             <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-deep-purple" />
             <span className="text-deep-purple font-bold text-xs sm:text-sm uppercase tracking-wide">
@@ -116,16 +200,66 @@ Thank you.`);
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-festival font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-yellow via-festival-orange to-neon-yellow mb-4 drop-shadow-2xl">
-            Grab Your Tickets
+            Choose Your Experience
           </h2>
           <p className="text-white/90 text-lg sm:text-xl font-medium px-4">
-            Limited Time Early Bird Pricing - Save ₦{savings.toLocaleString()}!
+            Limited Time Early Bird Pricing - Don't Miss Out!
           </p>
+        </div>
+
+        {/* Ticket Selection Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8 sm:mb-12">
+          {ticketTypes.map((ticket) => {
+            const IconComponent = ticket.icon;
+            const isSelected = selectedTicket === ticket.id;
+            
+            return (
+              <div
+                key={ticket.id}
+                onClick={() => handleTicketChange(ticket.id)}
+                className={`relative p-4 sm:p-6 rounded-2xl border-2 cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                  isSelected
+                    ? `border-neon-yellow bg-gradient-to-br ${ticket.gradient} text-white shadow-2xl scale-105`
+                    : "border-white/20 bg-white/10 backdrop-blur-sm text-white hover:border-neon-yellow/50"
+                }`}
+              >
+                <div className="text-center">
+                  <div className="flex justify-center mb-3">
+                    <IconComponent className={`w-8 h-8 ${isSelected ? 'text-white' : ticket.color}`} />
+                  </div>
+                  <h3 className="font-bold text-lg mb-2">{ticket.name}</h3>
+                  <div className="space-y-1">
+                    {ticket.originalPrice && (
+                      <p className={`text-sm line-through ${isSelected ? 'text-white/70' : 'text-gray-400'}`}>
+                        ₦{ticket.originalPrice.toLocaleString()}
+                      </p>
+                    )}
+                    <p className="text-xl font-bold">
+                      ₦{ticket.price.toLocaleString()}
+                    </p>
+                    {savings > 0 && (
+                      <p className={`text-sm font-semibold ${isSelected ? 'text-yellow-200' : 'text-green-400'}`}>
+                        Save ₦{savings.toLocaleString()}!
+                      </p>
+                    )}
+                  </div>
+                  
+                  {isSelected && (
+                    <div className="absolute -top-2 -right-2">
+                      <div className="bg-neon-yellow text-deep-purple rounded-full p-2">
+                        <Check className="w-4 h-4" />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* Left Column - Ticket Design & Selection */}
+            {/* Left Column - Selected Ticket Details */}
             <div className="lg:col-span-1">
               <div className="relative">
                 {/* Ticket Card Design */}
@@ -133,32 +267,56 @@ Thank you.`);
                   {/* Ticket Header */}
                   <div className="text-center mb-6">
                     <div className="flex items-center justify-center gap-2 mb-3">
-                      <Star className="w-5 h-5 sm:w-6 sm:h-6 text-festival-orange fill-current" />
+                      <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-festival-orange fill-current" />
                       <span className="text-festival-orange font-bold text-base sm:text-lg">
                         EARLY BIRD
                       </span>
-                      <Star className="w-5 h-5 sm:w-6 sm:h-6 text-festival-orange fill-current" />
+                      <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-festival-orange fill-current" />
                     </div>
+                    
+                    <div className="flex justify-center mb-3">
+                      <currentTicket.icon className={`w-12 h-12 ${currentTicket.color}`} />
+                    </div>
+                    
                     <h3 className="text-2xl sm:text-3xl font-bold text-deep-purple mb-2">
-                      General Admission
+                      {currentTicket.name}
                     </h3>
+                    <p className="text-gray-600 text-sm mb-4">{currentTicket.description}</p>
+                    
                     <div className="space-y-1">
-                      <p className="text-gray-500 line-through text-base sm:text-lg">
-                        ₦{regularPrice.toLocaleString()}
-                      </p>
+                      {currentTicket.originalPrice && (
+                        <p className="text-gray-500 line-through text-base sm:text-lg">
+                          ₦{currentTicket.originalPrice.toLocaleString()}
+                        </p>
+                      )}
                       <p className="text-3xl sm:text-4xl font-bold text-festival-orange">
-                        ₦{earlyBirdPrice.toLocaleString()}
+                        ₦{currentTicket.price.toLocaleString()}
                       </p>
-                      <p className="text-green-600 font-semibold">
-                        Save ₦{savings.toLocaleString()}!
-                      </p>
+                      {savings > 0 && (
+                        <p className="text-green-600 font-semibold">
+                          Save ₦{savings.toLocaleString()}!
+                        </p>
+                      )}
                     </div>
+                  </div>
+
+                  {/* Benefits */}
+                  <div className="mb-6 p-4 bg-gray-50 rounded-xl">
+                    <h4 className="font-bold text-deep-purple mb-3 text-center">What's Included:</h4>
+                    <ul className="space-y-2">
+                      {currentTicket.benefits.map((benefit, index) => (
+                        <li key={index} className="flex items-center text-sm text-gray-700">
+                          <Check className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
                   {/* Quantity Selector */}
                   <div className="mb-6">
                     <label className="block text-deep-purple font-bold mb-3 text-center">
-                      Select Quantity
+                      Select Quantity (Max: {currentTicket.maxQuantity})
                     </label>
                     <div className="flex items-center justify-center space-x-3 sm:space-x-4">
                       <button
@@ -177,7 +335,7 @@ Thank you.`);
 
                       <button
                         onClick={incrementQuantity}
-                        disabled={quantity >= 10}
+                        disabled={quantity >= currentTicket.maxQuantity}
                         className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-festival-purple to-festival-magenta rounded-full flex items-center justify-center text-white disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 transition-all shadow-lg"
                       >
                         <span className="text-xl sm:text-2xl font-bold">+</span>
@@ -191,9 +349,11 @@ Thank you.`);
                     <p className="text-2xl sm:text-3xl font-bold text-neon-yellow">
                       {formatCurrency(total)}
                     </p>
-                    <p className="text-white/60 text-xs mt-1">
-                      You save: ₦{(savings * quantity).toLocaleString()}
-                    </p>
+                    {savings > 0 && (
+                      <p className="text-white/60 text-xs mt-1">
+                        You save: ₦{(savings * quantity).toLocaleString()}
+                      </p>
+                    )}
                   </div>
 
                   {/* Decorative perforated edge */}
@@ -246,7 +406,7 @@ Thank you.`);
                     Complete Your Payment
                   </h3>
                   <p className="text-gray-600 text-base sm:text-lg">
-                    Make a bank transfer to secure your early bird tickets
+                    Make a bank transfer to secure your {currentTicket.name.toLowerCase()} tickets
                   </p>
                 </div>
 
@@ -317,7 +477,7 @@ Thank you.`);
                           {formatCurrency(total)}
                         </p>
                         <p className="text-festival-orange font-semibold mt-1">
-                          Early Bird Price!
+                          {currentTicket.name} Early Bird Price!
                         </p>
                       </div>
                     </div>
@@ -341,7 +501,7 @@ Thank you.`);
                     </ol>
                     <ol
                       className="text-blue-700 space-y-2 list-decimal list-inside text-sm sm:text-base"
-                      start="3"
+                      start={3}
                     >
                       <li className="font-medium">Screenshot your receipt</li>
                       <li className="font-medium">
