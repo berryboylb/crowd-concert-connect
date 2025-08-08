@@ -22,7 +22,9 @@ const MapSection = () => {
           <h2 className="text-4xl md:text-5xl font-festival font-bold text-neon-yellow mb-4 drop-shadow-lg">
             Find Your Way to the Concert
           </h2>
-          <p className="text-white/80 text-lg">Lagos Open Air Arena - The heart of the festival</p>
+          <p className="text-white/80 text-lg">
+            Rowe Park - The heart of the festival
+          </p>
         </div>
 
         {/* Map Container */}
@@ -30,8 +32,9 @@ const MapSection = () => {
           <div className="bg-black/20 backdrop-blur-sm rounded-xl p-4 border border-neon-yellow/20">
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
               {/* Embedded Map */}
+
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.4995373775684!2d3.3792057!3d6.4550575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc692ba70de9ee3c!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2s!4v1000000000000!5m2!1sen!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.1952503001417!2d3.3784342745587974!3d6.4969473934952156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8c89ed9ce3b9%3A0xe789e87fbc998d8b!2sRowe%20Park%20Yaba%20Lagos!5e0!3m2!1sen!2sng!4v1754672170624!5m2!1sen!2sng"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
@@ -41,14 +44,17 @@ const MapSection = () => {
                 title="Event Location Map"
                 className="rounded-lg"
               ></iframe>
-              
+
               {/* Map Overlay Info */}
               <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm text-white p-3 rounded-lg">
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-5 h-5 text-neon-yellow" />
                   <div>
-                    <p className="font-semibold">Lagos Open Air Arena</p>
-                    <p className="text-sm text-white/80">123 Festival Road, Lagos</p>
+                    <p className="font-semibold">Rowe Park </p>
+                    <p className="text-sm text-white/80">
+                      F9WJ+QCC, Herbert Macaulay Way, Yaba, Lagos 101245, Lagos,
+                      Nigeria
+                    </p>
                   </div>
                 </div>
               </div>
@@ -79,10 +85,12 @@ const MapSection = () => {
               <div className="w-12 h-12 bg-electric-green rounded-full flex items-center justify-center mr-4">
                 <Users className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-white font-semibold text-lg">Public Transport</h3>
+              <h3 className="text-white font-semibold text-lg">
+                Public Transport
+              </h3>
             </div>
             <div className="text-white/80 space-y-2">
-              <p>Nearest bus stop: "Festival Bus Stop"</p>
+              <p>Nearest bus stop: "Herbert Macaulay Way"</p>
               <p className="text-sm">5-minute walk from venue</p>
               <p className="text-sm">Special shuttle service available</p>
             </div>
@@ -97,7 +105,7 @@ const MapSection = () => {
               <h3 className="text-white font-semibold text-lg">Ride-Hail</h3>
             </div>
             <div className="text-white/80 space-y-2">
-              <p>Drop-off point at Gate B</p>
+              <p>Book a ride to Yaba, Herbert Macaulay Way </p>
               <p className="text-sm">Uber, Bolt, and taxis welcome</p>
               <p className="text-sm">Dedicated pickup area after event</p>
             </div>
@@ -106,7 +114,7 @@ const MapSection = () => {
 
         {/* Directions Button */}
         <div className="text-center">
-          <button 
+          <button
             onClick={openDirections}
             className="bg-gradient-to-r from-festival-purple to-festival-magenta text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-festival-purple/50 flex items-center space-x-2 mx-auto"
           >

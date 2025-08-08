@@ -37,8 +37,8 @@ const AboutSection = () => {
               <h3 className="text-white font-semibold text-lg">Date & Time</h3>
             </div>
             <div className="text-white/80 space-y-2">
-              <p><strong>Date:</strong> Friday, June 6, 2025 </p>
-              <p><strong>Time:</strong> 8 PM</p>
+              <p><strong>Date:</strong>Saturday, November 29, 2025 </p>
+              <p><strong>Time:</strong> 7 PM</p>
               <p><strong>Duration:</strong> Till Dawn</p>
             </div>
           </div>
@@ -50,8 +50,8 @@ const AboutSection = () => {
               <h3 className="text-white font-semibold text-lg">Venue</h3>
             </div>
             <div className="text-white/80 space-y-2">
-              <p><strong>Location:</strong> To be communicated</p>
-              <p><strong>Address:</strong> To be communicated</p>
+              <p><strong>Location:</strong> Rowe Park</p>
+              <p><strong>Address:</strong> Yaba, Lagos.</p>
               <p><strong>Capacity:</strong> 500+ Concert-goers</p>
             </div>
           </div>
