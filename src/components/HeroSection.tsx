@@ -111,8 +111,7 @@ const HeroSection = () => {
           <p className="text-white font-semibold mb-1">Brought to you by:</p>
           <p className="text-white font-bold text-lg">HYPEVIBE MEDIA</p>
           <p className="text-white font-semibold mb-1">Hosted by:</p>
-          <p className="text-white font-bold text-lg">BLAZING CREATIVES</p>
-          <p className="text-white font-bold text-lg">HYPEMAN GPEE</p>
+          <p className="text-white font-bold text-lg">GPEE WATIMAGBO</p>
         </div>
 
         {/* Call to Action */}

@@ -4,7 +4,7 @@ import { MapPin, Car, Users, Navigation } from 'lucide-react';
 
 const MapSection = () => {
   const openDirections = () => {
-    const address = "Lagos Open Air Arena, 123 Festival Road, Lagos, Nigeria";
+    const address = "F9WJ+QCC, Herbert Macaulay Wy, Yaba, Lagos 101245, Lagos";
     const encodedAddress = encodeURIComponent(address);
     window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`, '_blank');
   };
